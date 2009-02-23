@@ -49,6 +49,9 @@
 	</div>
 	
 	<?php if($comments->num_rows() > 0): ?>
+		<?php echo $pageNavLinks; ?>
+		
+		<div style="overflow:auto; height:435px">
 		<?php foreach($comments->result() as $comment): ?>
 		
 			<div class="comment">
@@ -67,12 +70,11 @@
 			</div>
 		
 		<?php endforeach; ?>
+		</div>
 	<?php
 		else:
 			echo "<div class='comment'>" . 'There are no comments &hellip; yet!' . "</div>";
 		endif;
-		
-		echo $pageNavLinks;
 	?>
 </div>
 </div>

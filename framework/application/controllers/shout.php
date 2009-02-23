@@ -263,7 +263,7 @@ class Shout extends Controller {
 		}
 
 		# prep pagination
-		$config['per_page'] = '3';
+		$config['per_page'] = '10';
 		$config['uri_segment'] = 5;
 		$config['base_url'] = base_url() . 'index.php/shout/detail/' . $data['submission_id'] . '/more';
 		
