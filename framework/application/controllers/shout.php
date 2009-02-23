@@ -135,7 +135,7 @@ class Shout extends Controller {
                array(
                      'field'   => 'title',
                      'label'   => 'Title',
-                     'rules'   => 'trim|required|min_length[3]|max_length[60]|htmlspecialchars|xss_clean'
+                     'rules'   => 'trim|required|min_length[3]|max_length[30]|htmlspecialchars|xss_clean'
                   ),
                array(
                      'field'   => 'body',
