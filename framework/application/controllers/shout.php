@@ -265,7 +265,7 @@ class Shout extends Controller {
 		# prep pagination
 		$config['per_page'] = '10';
 		$config['uri_segment'] = 5;
-		$config['base_url'] = base_url() . 'index.php/shout/detail/' . $data['submission_id'] . '/more';
+		$config['base_url'] = base_url() . 'shout/detail/' . $data['submission_id'] . '/more';
 		
 		$config['first_link'] = '';
 		$config['last_link'] = '';
