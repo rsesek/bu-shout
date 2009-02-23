@@ -48,6 +48,12 @@ body {
 	height: 546px;
 }
 
+#col_scroll {
+	height: 530px;
+	overflow-x: default;
+	overflow-y: auto;
+}
+
 #header {	
 	width: 1006px;
 	height: 19px;

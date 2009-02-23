@@ -1,7 +1,6 @@
 TODO File for the BU Student Union Shout Box
 ============================================
 
-- In /detail, include the shout in the scrolling div and move page nav below and outside
 - Split the Google Analytics footer info into its own template
 - Number of comments in brackets next to the title on the main shout page
 - Realtime character count (a la Twitter)

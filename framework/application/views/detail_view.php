@@ -39,6 +39,7 @@
 </div>
 
 <div id="right_col" class="rounded">
+<div id="col_scroll">
 	<div id="shout_detail" class="rounded">
 		<div id="shout_title"><?php echo $shout->row()->title; ?></div>
 		<div id="shout_date">
@@ -49,9 +50,7 @@
 	</div>
 	
 	<?php if($comments->num_rows() > 0): ?>
-		<?php echo $pageNavLinks; ?>
 		
-		<div style="overflow:auto; height:435px">
 		<?php foreach($comments->result() as $comment): ?>
 		
 			<div class="comment">
@@ -70,12 +69,15 @@
 			</div>
 		
 		<?php endforeach; ?>
-		</div>
 	<?php
 		else:
 			echo "<div class='comment'>" . 'There are no comments &hellip; yet!' . "</div>";
 		endif;
 	?>
+</div>
+
+	<?php echo $pageNavLinks; ?>
+	
 </div>
 </div>
 <div id="footer"></div>
