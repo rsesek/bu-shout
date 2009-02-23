@@ -42,7 +42,7 @@
 	<div id="shout_detail" class="rounded">
 		<div id="shout_title"><?php echo $shout->row()->title; ?></div>
 		<div id="shout_date">
-			<?php echo date('l, F jS', strtotime($shout->row()->date));  ?>
+			<?php echo get_friendly_date(strtotime($shout->row()->date));  ?>
 		</div>
 
 		<div id="shout_body"><?php echo $shout->row()->body; ?></div>
@@ -61,7 +61,7 @@
 						echo anchor('/shout/admin/delete_comment/' . $comment->id, 'delete', array('class'=>'admin_action'));
 					}
 					
-					echo "<span class='date'>" . date('l, F jS', strtotime($comment->date)) . "</span>";
+					echo "<span class='date'>" . get_friendly_date(strtotime($comment->date)) . "</span>";
 					echo "<div class='body'>" . $comment->body . "</div>";
 					
 					echo '&nbsp;';
