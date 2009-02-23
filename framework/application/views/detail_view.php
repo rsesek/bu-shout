@@ -16,7 +16,7 @@
 	</div>
 	<div id="left_bottom" class="rounded">
 	
-	<div class="notice">So whatcha you think?  Share it.</div>
+	<div class="notice">So whatcha think?  Share it.</div>
 	
 	<?php
 	
