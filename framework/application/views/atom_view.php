@@ -1,6 +1,6 @@
 <?php echo '<' . '?xml version="1.0" encoding="utf-8"?' . '>' ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<title>BU Student Union Shout Box</title>
+	<title>BU Shout</title>
 	<link href="<?php echo base_url() ?>"/>
 	<updated><?php echo date('Y-m-d\TH:i:s', strtotime($shouts->row()->date)); ?></updated>
 	<author>
