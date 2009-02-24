@@ -203,6 +203,8 @@ a.shout_link:hover {
 		font-style: italic;
 		float: right;
 		color: #DDD;
+		margin-top: -5px;
+		text-align: right;
 	}
 	
 	a.admin_action {

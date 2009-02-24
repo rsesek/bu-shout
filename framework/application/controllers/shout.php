@@ -176,10 +176,6 @@ class Shout extends Controller {
 
 			redirect('shout');
 		}
-
-		# prep db
-		$this->db->select('*');
-		$this->db->order_by("lastpost", "desc");
 		
 		# prep pagination
 		$config['per_page'] = '10';
@@ -199,11 +195,15 @@ class Shout extends Controller {
 		# get uri data
 		$data['db_offset'] = $this->uri->segment(3, 0);
 
-		# get(table, limit, offset)
-		$data['submissions'] = $this->db
-			->order_by('lastpost', 'desc')
-			->get('submissions', $config['per_page'], $data['db_offset'])
-		;
+		$data['submissions'] = $this->db->query("
+			SELECT s.*, c.count FROM submissions AS s
+			LEFT JOIN (SELECT submission_id, COUNT(*) AS count FROM comments AS c GROUP BY submission_id)
+				AS c
+				ON (s.id = c.submission_id)
+			ORDER BY lastpost DESC
+			LIMIT {$config['per_page']}
+				OFFSET {$data['db_offset']}
+		");
 		
 		$data['pageNavLinks'] = $this->pagination->create_links();
 
