@@ -13,7 +13,7 @@
 		<id><?php echo base_url() ?>shout/detail/<?php echo $shout->id ?></id>
 		<title><?php echo $shout->title ?></title>
 		<content><?php echo $shout->body ?></content>
-		<updated><?php echo date('Y-m-d\TH:i:s', strtotime($shout->date)) ?></updated>
+		<updated><?php echo date('Y-m-d\TH:i:s', strtotime($shout->lastpost)) ?></updated>
 	</entry>
 <?php endforeach; ?>
 	

@@ -312,7 +312,7 @@ class Shout extends Controller {
 		
 		$data['shouts'] = $this->db
 			->select()
-			->order_by('lastpost', 'desc')
+			->order_by('date', 'desc')
 			->get('submissions', 20)
 		;
 		
