@@ -197,7 +197,7 @@ class Shout extends Controller {
 
 		$data['submissions'] = $this->db->query("
 			SELECT s.*, c.count FROM submissions AS s
-			LEFT JOIN (SELECT submission_id, COUNT(*) AS count FROM comments AS c GROUP BY submission_id)
+			LEFT JOIN (SELECT submission_id, COUNT(*) AS count FROM comments GROUP BY submission_id)
 				AS c
 				ON (s.id = c.submission_id)
 			ORDER BY lastpost DESC
