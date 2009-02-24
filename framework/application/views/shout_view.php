@@ -4,6 +4,7 @@
 <head>
 <title>Shout</title>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css" />
+<link rel="alternate" type="application/atom+xml" title="Shout @ BU - Atom" href="<?php echo base_url() ?>shout/atom" />
 </head>
 <body>
 

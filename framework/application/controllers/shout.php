@@ -306,6 +306,19 @@ class Shout extends Controller {
 		$this->load->view('detail_view', $data);
 	}
 	
+	function atom()
+	{
+		$data = array();
+		
+		$data['shouts'] = $this->db
+			->select()
+			->order_by('lastpost', 'desc')
+			->get('submissions', 20)
+		;
+		
+		header('Content-Type: application/atom+xml');
+		$this->load->view('atom_view', $data);
+	}
 }
 
 /* End of file shout.php */
