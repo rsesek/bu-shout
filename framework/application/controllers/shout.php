@@ -178,8 +178,8 @@ class Shout extends Controller {
 		}
 
 		# prep db
-		$this->db->select('id, title, body, ip, date');
-		$this->db->order_by("date", "desc");
+		$this->db->select('*');
+		$this->db->order_by("lastpost", "desc");
 		
 		# prep pagination
 		$config['per_page'] = '10';
@@ -200,7 +200,10 @@ class Shout extends Controller {
 		$data['db_offset'] = $this->uri->segment(3, 0);
 
 		# get(table, limit, offset)
-		$data['submissions'] = $this->db->get('submissions', $config['per_page'], $data['db_offset']);
+		$data['submissions'] = $this->db
+			->order_by('lastpost', 'desc')
+			->get('submissions', $config['per_page'], $data['db_offset'])
+		;
 		
 		$data['pageNavLinks'] = $this->pagination->create_links();
 
@@ -248,6 +251,7 @@ class Shout extends Controller {
 			$data['date'] = getDateTime();
 			
 			$this->db->insert('comments', $data);
+			$this->db->update('submissions', array('lastpost' => getDateTime()), array('id' => $data['submission_id']));
 
 			redirect('shout/detail/' . $data['submission_id']);
 		}

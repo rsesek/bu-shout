@@ -39,7 +39,7 @@
 
 <div id="right_col" class="rounded">
 	<?php if($submissions->num_rows() > 0): ?>
-		<?php foreach($submissions->result() as $submission):?><?php if($this->session->userdata('username')){echo anchor('/shout/admin/delete_shout/' . $submission->id, 'delete', array('class'=>'admin_action'));}?><div class="rounded shout"><div class="rounded shout_border"><div class="rounded shout_content"><a href="<?php echo base_url() . 'shout/detail/' . $submission->id;?>" class="shout_link"><span class="title"><?php echo $submission->title;?></span><span class="date"><?php echo get_friendly_date(strtotime($submission->date));?></span></a></div></div></div><?php endforeach;?>
+		<?php foreach($submissions->result() as $submission):?><?php if($this->session->userdata('username')){echo anchor('/shout/admin/delete_shout/' . $submission->id, 'delete', array('class'=>'admin_action'));}?><div class="rounded shout"><div class="rounded shout_border"><div class="rounded shout_content"><a href="<?php echo base_url() . 'shout/detail/' . $submission->id;?>" class="shout_link"><span class="title"><?php echo $submission->title;?></span><span class="date"><?php echo get_friendly_date(strtotime($submission->lastpost));?></span></a></div></div></div><?php endforeach;?>
 	<?php endif; ?>
 	<?php echo $pageNavLinks ?>
 
