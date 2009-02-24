@@ -1,7 +1,6 @@
 TODO File for the BU Student Union Shout Box
 ============================================
 
-- Split the Google Analytics footer info into its own template
 - Realtime character count (a la Twitter)
 - Implement deleted comments and shouts as a BOOL flag that can be undone (a la Gmail), rather than a hard delete
 
