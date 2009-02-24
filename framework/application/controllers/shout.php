@@ -169,7 +169,7 @@ class Shout extends Controller {
 			# seed array with post data and extend
 			$data = $_POST;
 			$data['ip'] = $ip;
-			$data['date'] = getDateTime();
+			$data['date'] = $data['lastpost'] = getDateTime();
 			
 			# insert
 			$this->db->insert('submissions', $data);
