@@ -179,7 +179,7 @@ function license ($license_choice, $text = '')
         array( 'cc_by-nc', 'Creative Commons Attribution-NonCommercial (version 2.5)', 'http://creativecommons.org/licenses/by-nc/2.5/' ),
         array( 'cc_by-nc-sa', 'Creative Commons Attribution-NonCommercial-ShareAlike (version 2.5)', 'http://creativecommons.org/licenses/by-nc-sa/2.5/' ),
         array( 'cc_by-sa', 'Creative Commons Attribution-ShareAlike (version 2.5)', 'http://creativecommons.org/licenses/by-sa/2.5/' ),
-        array( 'gpl', 'GNU General Public License (version 2)', 'http://www.gnu.org/licenses/lgpl.html' ),
+        array( 'gpl', 'GNU General Public License (version 2)', 'http://www.gnu.org/licenses/old-licenses/gpl-2.0.html' ),
         array( 'lgpl', 'GNU Lesser General Public License (version 2.1)', 'http://www.gnu.org/licenses/lgpl.html' ),
         array( 'mpl', 'Mozilla Public License (Version 1.1)', 'http://www.mozilla.org/MPL/MPL-1.1.html' ),
         array( 'apache', 'Apache License (version 2.0)', 'http://www.apache.org/licenses/LICENSE-2.0' ),
