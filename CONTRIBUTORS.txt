@@ -1,4 +1,4 @@
 Contributors
 ============
 Justin Kaufman (jkaufman@bu.edu)
-Robert Sesek (rsesek@bu.edu)
+Robert Sesek (rsesek@bluestatic.org)
