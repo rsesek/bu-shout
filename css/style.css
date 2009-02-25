@@ -239,6 +239,7 @@ a.shout_link:hover {
 
 #page_nav_links {
 	text-align: center;
+    margin-top: 15px;
 }
 #page_nav_links a {
 	color: #333;

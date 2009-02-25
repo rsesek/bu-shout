@@ -178,7 +178,7 @@ class Shout extends Controller {
 		}
 		
 		# prep pagination
-		$config['per_page'] = '10';
+		$config['per_page'] = '11';
 		$config['base_url'] = base_url() . 'shout/more';
 		$config['total_rows'] = $this->db->count_all('submissions');
 		$config['num_links'] = 2;
