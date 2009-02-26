@@ -167,10 +167,6 @@ a.shout_link {
 	width: 100%;
 }
 
-a.shout_link:hover {
-	border-bottom: 2px solid #BB0000;
-}
-
 .shout {
 	/* outer border */
 	margin: 0.1em;
@@ -229,7 +225,7 @@ a.shout_link:hover {
 
 #footer_text {
 	text-align: center;
-	font-size: 80%;
+	font-size: 70%;
 	color: #333;
 }
 
@@ -239,6 +235,7 @@ a.shout_link:hover {
 
 #page_nav_links {
 	text-align: center;
+    margin-top: 15px;
 }
 #page_nav_links a {
 	color: #333;
