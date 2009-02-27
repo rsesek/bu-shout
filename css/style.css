@@ -5,6 +5,10 @@ body {
 	margin-left: 32px;
 }
 
+a {
+	color: #EEE;
+}
+
 #left_col {
 	float: left;
 	width: 320px;
@@ -150,6 +154,10 @@ input[type='submit']:hover {
 
 .comment .body {
 	display: inline;
+}
+
+.comment .body a {
+	color: #333;
 }
 
 .comment .date {

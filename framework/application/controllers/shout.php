@@ -170,6 +170,9 @@ class Shout extends Controller {
 			$data = $_POST;
 			$data['ip'] = $ip;
 			$data['date'] = $data['lastpost'] = getDateTime();
+
+			# format urls and mailtos: auto_link([input string], [url, email, both], [open links in new window?])
+			$data['body'] = auto_link($data['body'], 'both', TRUE);
 			
 			# insert
 			$this->db->insert('submissions', $data);
@@ -249,6 +252,9 @@ class Shout extends Controller {
 			$data = $_POST;
 			$data['ip'] = $ip;
 			$data['date'] = getDateTime();
+			
+			# format urls and mailtos: auto_link([input string], [url, email, both], [open links in new window?])
+			$data['body'] = auto_link($data['body'], 'both', TRUE);
 			
 			$this->db->insert('comments', $data);
 			$this->db->update('submissions', array('lastpost' => getDateTime()), array('id' => $data['submission_id']));
