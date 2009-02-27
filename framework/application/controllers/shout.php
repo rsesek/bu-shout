@@ -44,8 +44,29 @@ class Shout extends Controller {
 				# find shout for redirect
 				$shout_id = $this->db->get_where('comments', array('id' => $comment_id))->row()->submission_id;
 
-				#remove
+				# remove
 				$this->db->delete('comments', array('id' => $comment_id));
+				
+				# if no comments remain, set last activity to submission date
+				$this->db->select('*')->from('comments')->where('submission_id', $shout_id);
+				if($this->db->count_all_results() < 1){
+						$submission_date = $this->db->get_where('submissions', array('id'=>$shout_id))->row()->date;
+						$this->db->update('submissions', array('lastpost'=>$submission_date), array('id' => $shout_id));
+				}
+				else{
+					# otherwise, update to the latest post's date
+					$this->db->select('date');
+					$this->db->from('comments');
+					$this->db->where('submission_id', $shout_id);
+					$this->db->order_by('date', 'desc');
+					$this->db->limit(1);
+					
+					$last_post_date = $this->db->get()->row()->date;
+
+					$this->db->update('submissions', array('lastpost' => $last_post_date), array('id' => $shout_id));
+				}
+				
+				# return to shout
 				redirect('shout/detail/' . $shout_id);
 			}
 			
