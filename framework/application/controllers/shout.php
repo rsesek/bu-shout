@@ -44,8 +44,29 @@ class Shout extends Controller {
 				# find shout for redirect
 				$shout_id = $this->db->get_where('comments', array('id' => $comment_id))->row()->submission_id;
 
-				#remove
+				# remove
 				$this->db->delete('comments', array('id' => $comment_id));
+				
+				# if no comments remain, set last activity to submission date
+				$this->db->select('*')->from('comments')->where('submission_id', $shout_id);
+				if($this->db->count_all_results() < 1){
+						$submission_date = $this->db->get_where('submissions', array('id'=>$shout_id))->row()->date;
+						$this->db->update('submissions', array('lastpost'=>$submission_date), array('id' => $shout_id));
+				}
+				else{
+					# otherwise, update to the latest post's date
+					$this->db->select('date');
+					$this->db->from('comments');
+					$this->db->where('submission_id', $shout_id);
+					$this->db->order_by('date', 'desc');
+					$this->db->limit(1);
+					
+					$last_post_date = $this->db->get()->row()->date;
+
+					$this->db->update('submissions', array('lastpost' => $last_post_date), array('id' => $shout_id));
+				}
+				
+				# return to shout
 				redirect('shout/detail/' . $shout_id);
 			}
 			
@@ -140,14 +161,14 @@ class Shout extends Controller {
                array(
                      'field'   => 'body',
                      'label'   => 'Comment',
-                     'rules'   => 'trim|required|min_length[3]|max_length[500]|htmlspecialchars|xss_clean'
+                     'rules'   => 'trim|required|min_length[3]|max_length[1500]|htmlspecialchars|xss_clean'
                   )
             );
 
 		$this->form_validation->set_message('required', '%s required');
 		$this->form_validation->set_message('min_length', '%s too short');
 		$this->form_validation->set_message('max_length', '%s too long');
-		
+
     	$this->form_validation->set_rules($rules);
 		
 		# valid input
@@ -170,6 +191,9 @@ class Shout extends Controller {
 			$data = $_POST;
 			$data['ip'] = $ip;
 			$data['date'] = $data['lastpost'] = getDateTime();
+
+			# format urls and mailtos: auto_link([input string], [url, email, both], [open links in new window?])
+			$data['body'] = auto_link($data['body'], 'both', TRUE);
 			
 			# insert
 			$this->db->insert('submissions', $data);
@@ -218,7 +242,7 @@ class Shout extends Controller {
                array(
                      'field'   => 'body',
                      'label'   => 'Comment',
-                     'rules'   => 'trim|required|min_length[3]|max_length[450]|htmlspecialchars|xss_clean'
+                     'rules'   => 'trim|required|min_length[3]|max_length[1500]|htmlspecialchars|xss_clean'
                   )
             );
             
@@ -249,6 +273,9 @@ class Shout extends Controller {
 			$data = $_POST;
 			$data['ip'] = $ip;
 			$data['date'] = getDateTime();
+			
+			# format urls and mailtos: auto_link([input string], [url, email, both], [open links in new window?])
+			$data['body'] = auto_link($data['body'], 'both', TRUE);
 			
 			$this->db->insert('comments', $data);
 			$this->db->update('submissions', array('lastpost' => getDateTime()), array('id' => $data['submission_id']));
