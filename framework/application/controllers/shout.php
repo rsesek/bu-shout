@@ -161,14 +161,14 @@ class Shout extends Controller {
                array(
                      'field'   => 'body',
                      'label'   => 'Comment',
-                     'rules'   => 'trim|required|min_length[3]|max_length[500]|htmlspecialchars|xss_clean'
+                     'rules'   => 'trim|required|min_length[3]|max_length[1500]|htmlspecialchars|xss_clean'
                   )
             );
 
 		$this->form_validation->set_message('required', '%s required');
 		$this->form_validation->set_message('min_length', '%s too short');
 		$this->form_validation->set_message('max_length', '%s too long');
-		
+
     	$this->form_validation->set_rules($rules);
 		
 		# valid input
@@ -242,7 +242,7 @@ class Shout extends Controller {
                array(
                      'field'   => 'body',
                      'label'   => 'Comment',
-                     'rules'   => 'trim|required|min_length[3]|max_length[450]|htmlspecialchars|xss_clean'
+                     'rules'   => 'trim|required|min_length[3]|max_length[1500]|htmlspecialchars|xss_clean'
                   )
             );
             
